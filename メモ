@@ -1,0 +1,47 @@
+users.php分データINSERT
+
+<?php
+    require_once 'database.php';
+
+    class Users extends Database{
+        public function registration($first_name,$last_name,$address,$contact_number,$email,$username,$password){
+            $sql1 = "INSERT INTO accounts(username,password) VALUES ('$username','$password')";
+
+            if($this->conn->query($sql1)){
+                $last_account_id = $this->conn->insert_id;
+
+                $sql2 = "INSERT INTO users(first_name,last_name,address,contact_number,email,account_id) VALUES ('$first_name','$last_name','$address','$contact_number','$email','$last_account_id')";
+
+                if($this->conn->query($sql2)){
+                   
+                }else{
+                   die("CANNOT ADD ACCOUNT: ".$this->conn->error);
+                }
+            }else{
+                die("CANNOT ADD USER: ".$this->conn->error);
+            }
+            header("Location: UI/login.php");
+        }
+    }
+?>
+
+userAction.php分データINSERT
+
+<?php
+    require 'class/users.php';
+    $user = new Users();
+
+   
+    if(isset($_POST['register'])){
+        $first_name = $_POST['first_name'];
+        $last_name = $_POST['last_name'];
+        $address = $_POST['address'];
+        $contact_number = $_POST['contact_number'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = md5($_POST['password']);
+
+        $user->registration($first_name,$last_name,$address,$contact_number,$email,$username,$password);
+    }
+
+?>
