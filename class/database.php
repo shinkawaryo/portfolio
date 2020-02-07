@@ -14,6 +14,7 @@
             }
 
             return $this->conn;
+            //HI RYO-SAN
         }
     }
 ?>
