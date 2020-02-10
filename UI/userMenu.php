@@ -15,30 +15,18 @@
 </head>
 <body>
     <!-- Page Content -->
-    <nav class="navbar nabver-expand-lg navbar-dark bg-dark text-white m-0 p-0">
-                <div class="form-row col-md-6 m-0 p-0">
-                    <div class="form-group ml-3 p-0 ">
-                  
-                    <a href="" class="navbar-brand p-0">Food</a>
-                    </div>
-                    <div class="form-group ml-3 p-0">
-                   
-                    <a href="" class="navbar-brand p-0">Dessert</a>
-                    </div>
-                    <div class="form-group ml-3 p-0">
-
-                   
-                    <a href="" class="navbar-brand p-0">Drink</a>
-                    </div>
-                    
-                </div>
-                    <div class="form-row col-md-6 m-0 p-0 text-right">
-                        <div class="form-group col-md-12 m-0 p-0 ">                         
-                            <input type="submit" value="Order Contents" name="order_contents" class="btn btn-danger col-md-3">
-                            <input type="submit" value="Bill" name="bill" class="btn btn-danger col-md-3">
-                        </div>
-                    </div>     
+    <nav class="navbar nabver-expand-lg navbar-dark bg-dark text-white m-0 p-0 col-md-12">            
+        <h2 class="col-md-6">Welcome</h2>                   
+        <ul class="nav justify-content-end col-md-6">
+        <li class="nav-item col-md-3 text-center">
+            <a class="nav-link active form-control bg-danger text-white" href="#">Oder Contents</a>
+        </li>
+        <li class="nav-item col-md-3 text-center">
+            <a class="nav-link form-control bg-danger text-white" href="#">Bill</a>
+        </li>
+        </ul>                    
     </nav>
+
     <div class="container">
     <div class="form-row col-md-12 m-0 p-0">
     <!-- Page Heading -->
@@ -59,9 +47,9 @@
         <?php
             $allCategories = $category->displayCategory();
 
-            foreach($allCategories as $category){
-                $category_id = $category['category_id'];
-                $category_name = $category['category_name'];
+            foreach($allCategories as $all_category){
+                $category_id = $all_category['category_id'];
+                $category_name = $all_category['category_name'];
                 echo "
                         <a href='specificMenu.php?category_id=".$category_id."'>".$category_name."</a>
                 ";
@@ -77,25 +65,37 @@
     </ul>
     </div>
     </div>
-    <form action="" method="post">
+    <form action="../menuAction.php" method="post">
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                    <div class="card">
-                        <div class="card-header m-0 p-0">
-                            <h5 class="card-title m-1"></h5>
-                        </div>
-                        <a href="#"><img class="card-img-top " src="http://placehold.it/700x400" alt=""></a>       
-                        <div class="card-body m-0 p-1"> 
-                            <div class="form-row "> 
-                                <div class="form-group col-md-12 p-2 m-0">                                  
-                                    <p class="form-control col-md-12 mx-auto m-0">Price: </p>
+                <?php
+                    $allMenu = $category->displayAllMenu();
+
+                    // print_r($specific_category);
+
+                    foreach($allMenu as $all_menu){
+                    echo "<div class='card'>
+                                <div class='card-header m-0 p-0'>
+                                    <h5 class='card-title m-1'>".$all_menu['menu_name']."</h5>
+                                    <a href='#'><img class='card-img-top ' src='../upload/".$all_menu['menu_picture']."' alt=''></a>       
                                 </div>
-                                <div class="form-group form-inline m-0">
-                                    <label for="hou_many" class="ml-3">How Many</label>
-                                    <input type="number" name="" id="" class="form-control col-md-3 p-0 m-0 mx-auto text-center">
+                        <div class='card-body m-0 p-1'> 
+                            <div class='form-row'> 
+                                <div class='form-group col-md-12 p-2 m-0'>                                  
+                                    <p class='form-control col-md-12 mx-auto m-0'>Price: ".$all_menu['menu_price']."</p>
                                 </div>
                             </div>
-                        </div>  
+                            <div class='form-row'>
+                                <div class='form-group form-inline m-0'>
+                                <label for='hou_many' class='ml-3'>How Many</label>
+                                <input type='number' name='' id='' class='form-control col-md-3 p-0 m-0 mx-auto text-center'>
+                                </div>
+                            </div>
+                        </div>";
+                    
+                    }
+                ?>
+                    </div>  
                 </div>
             </div>
             
@@ -104,11 +104,7 @@
     <footer class="form-row col-md-12 " style="position: absolute;bottom: 0;">
         <input type="submit" value="Order" name="order" class="form-control bg-danger text-white col-md-6">
     </footer>
-    </form>
-    
-    <!-- /.row -->
-
-    
+    </form>   
 
        
 </body>
