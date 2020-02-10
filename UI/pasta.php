@@ -58,22 +58,22 @@
             <span class="sr-only">Previous</span>
             </a>
     </li>
-    <li class="page-item">
+    <li class="page-category">
         <a class="page-link" href="#">pasta</a>
     </li>
-    <li class="page-item">
+    <li class="page-category">
         <a class="page-link" href="#">pizza</a>
     </li>
-    <li class="page-item">
+    <li class="page-category">
         <a class="page-link" href="#">meat</a>
     </li>
-    <li class="page-item">
+    <li class="page-category">
         <a class="page-link" href="#">fish</a>
     </li>
-    <li class="page-item">
+    <li class="page-category">
         <a class="page-link" href="#">other</a>
     </li>
-    <li class="page-item">
+    <li class="page-category">
         <a class="page-link" href="#" aria-label="Next">
             <span aria-hidden="true">&raquo;</span>
             <span class="sr-only">Next</span>

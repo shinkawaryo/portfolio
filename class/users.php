@@ -17,7 +17,7 @@
         public function createUser($first_name,$last_name,$address,$contact_number,$email){
             $last_account_id = $this->conn->insert_id;
 
-            $sql = "INSERT INTO users(first_name,last_name,address,contact_number,email, account_id) VALUES ('$first_name','$last_name','$address','$contact_number','$email''$last_account_id')";
+            $sql = "INSERT INTO users(first_name,last_name,address,contact_number,email, account_id) VALUES ('$first_name','$last_name','$address','$contact_number','$email','$last_account_id')";
 
             echo $sql;
             $result = $this->conn->query($sql);
