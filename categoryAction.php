@@ -1,5 +1,5 @@
 <?php
-    require_once 'class/categories.php';
+    require 'class/categories.php';
     $category = new categories();
 
     if(isset($_POST['category_register'])){

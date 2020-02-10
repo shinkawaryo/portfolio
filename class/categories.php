@@ -1,5 +1,5 @@
 <?php
-    require_once 'database.php';
+    require 'database.php';
 
     class categories extends Database{
         public function addCategory($category_name){
@@ -44,7 +44,7 @@
 
 
         public function specificCategory($specific_category_id){
-            $sql = "SELECT * FROM categories INNER JOIN menu ON categories.category_id = menu.category_id WHERE categories.category_id ='$specific_category_id'";
+            $sql = "SELECT * FROM categories INNER JOIN menu ON categories.category_id = menu.category_id WHERE categories.category_id = '$specific_category_id'";
 
             $result = $this->conn->query($sql);
 

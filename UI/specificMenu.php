@@ -1,5 +1,5 @@
 <?php
-    include '../menuAction.php';
+    // include '../menuAction.php';
     include '../categoryAction.php';
 
     $specific_category_id = $_GET['category_id'];
@@ -62,9 +62,9 @@
         <?php
             $allCategories = $category->displayCategory();
 
-            foreach($allCategories as $category){
-                $category_id = $category['category_id'];
-                $category_name = $category['category_name'];
+            foreach($allCategories as $all_category){
+                $category_id = $all_category['category_id'];
+                $category_name = $all_category['category_name'];
                 echo "
                         <a href='specificMenu.php?category_id=".$category_id."'>".$category_name."</a>
                 ";
@@ -86,6 +86,8 @@
                 <?php
                     $specific_category = $category->specificCategory($specific_category_id);
 
+                    // print_r($specific_category);
+
                     foreach($specific_category as $spec_cat){
                     echo "<div class='card'>
                     <div class='card-header m-0 p-0'>
@@ -95,7 +97,7 @@
                     <div class='card-body m-0 p-1'> 
                         <div class='form-row'> 
                             <div class='form-group col-md-12 p-2 m-0'>                                  
-                                <p class='form-control col-md-12 mx-auto m-0'>Price: ".$spec_cat['price']."</p>
+                                <p class='form-control col-md-12 mx-auto m-0'>Price: ".$spec_cat['menu_price']."</p>
                             </div>
                             <div class='form-group form-inline m-0'>
                                 <label for='hou_many' class='ml-3'>How Many</label>
