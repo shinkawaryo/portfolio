@@ -29,5 +29,20 @@
             }
         
         }
+
+        public function displaySpecificCategory($category_id){
+            $sql = "SELECT * FROM categories WHERE category_id = '$category_id'";
+            $result = $this->conn->query($sql);
+    
+            $rows = array();
+    
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $rows[] = $row;
+                }
+                return $rows;
+            }
+        
+        }
     }
 ?>
