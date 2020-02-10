@@ -91,5 +91,17 @@
             }
 
         }
+
+        public function deleteMenu($category_id){
+            $sql = "DELETE FROM menu INNER JOIN categories ON menu.category_id = categories.category_id WHERE category_id = '$category_id'";
+
+            $result = $this->conn->query($sql);
+
+            if($result == false){
+                die("Cannot Delete: ".$this->conn->error);
+            }else{
+                header("Location: categoryList.php");
+            }
+        }
     }
 ?>
