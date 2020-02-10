@@ -1,5 +1,6 @@
 <?php
     include '../categoryAction.php';
+    include '../menuAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -38,7 +39,7 @@
                                 <td>".$category['category_id']."</td>
                                 <td>".$category['category_name']."</td>
                                 
-                                <td><a href='deleteMenu.php?category_id=$category_id' role='button' class='btn btn-outline-danger'>Delete Menu</a></td>
+                                <td><a href='deleteCategory.php?category_id=$category_id' role='button' class='btn btn-outline-danger'>Delete Menu</a></td>
                             </tr> 
                         ";
                          }

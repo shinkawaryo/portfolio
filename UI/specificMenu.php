@@ -1,6 +1,9 @@
 <?php
     include '../menuAction.php';
     include '../categoryAction.php';
+
+    $specific_category_id = $_GET['category_id'];
+
 ?>
 
 <!DOCTYPE html>
@@ -77,25 +80,32 @@
     </ul>
     </div>
     </div>
-    <form action="" method="post">
+    <form action="../menuAction.php" method="post">
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6 mb-3">
-                    <div class="card">
-                        <div class="card-header m-0 p-0">
-                            <h5 class="card-title m-1"></h5>
-                        </div>
-                        <a href="#"><img class="card-img-top " src="http://placehold.it/700x400" alt=""></a>       
-                        <div class="card-body m-0 p-1"> 
-                            <div class="form-row "> 
-                                <div class="form-group col-md-12 p-2 m-0">                                  
-                                    <p class="form-control col-md-12 mx-auto m-0">Price: </p>
-                                </div>
-                                <div class="form-group form-inline m-0">
-                                    <label for="hou_many" class="ml-3">How Many</label>
-                                    <input type="number" name="" id="" class="form-control col-md-3 p-0 m-0 mx-auto text-center">
-                                </div>
+                <?php
+                    $specific_category = $category->specificCategory($specific_category_id);
+
+                    foreach($specific_category as $spec_cat){
+                    echo "<div class='card'>
+                    <div class='card-header m-0 p-0'>
+                        <h5 class='card-title m-1'>".$spec_cat['menu_name']."</h5>
+                    </div>
+                    <a href='#'><img class='card-img-top ' src='../upload/".$spec_cat['menu_picture']."' alt=''></a>       
+                    <div class='card-body m-0 p-1'> 
+                        <div class='form-row'> 
+                            <div class='form-group col-md-12 p-2 m-0'>                                  
+                                <p class='form-control col-md-12 mx-auto m-0'>Price: ".$spec_cat['price']."</p>
                             </div>
-                        </div>  
+                            <div class='form-group form-inline m-0'>
+                                <label for='hou_many' class='ml-3'>How Many</label>
+                                <input type='number' name='' id='' class='form-control col-md-3 p-0 m-0 mx-auto text-center'>
+                            </div>
+                        </div>";
+                    
+                    }
+                ?>
+                    </div>  
                 </div>
             </div>
             
@@ -104,11 +114,7 @@
     <footer class="form-row col-md-12 " style="position: absolute;bottom: 0;">
         <input type="submit" value="Order" name="order" class="form-control bg-danger text-white col-md-6">
     </footer>
-    </form>
-    
-    <!-- /.row -->
-
-    
+    </form>   
 
        
 </body>
