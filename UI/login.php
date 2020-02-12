@@ -11,7 +11,7 @@
 <body>
 <div class="container w-50 my-5 text-center">
         <h2 class="display-4">Login</h2>
-        <form action="" method="post">
+        <form action="../userAction.php" method="post">
             <div class="form-group mx-auto mt-5 col-md-6 border-bottom d-inline-block mx-3 mb-4">
                <input type="text" name="username" placeholder="USERNAME" class="border-0   text-center form-control" id=""> 
             </div>           
@@ -19,7 +19,7 @@
                <input type="password" name="password" placeholder="PASSWORD" class="border-0 text-center form-control" id=""> 
             </div>           
             <div class="form-group mx-auto col-md-6 ">
-               <input type="submit" name="enter" value="ENTER" class="form-control btn btn-dark text-white" id=""> 
+               <input type="submit" name="login" value="LOGIN" class="form-control btn btn-dark text-white" id=""> 
             </div> 
             <div class="form-row col-md-12">
                 <div class="form-inline mx-auto mt-5 ">
@@ -35,12 +35,3 @@
 </body>
 </html>
 
-<?php
-    if(isset($_POST['enter'])){
-        $username = $_POST['username'];
-        $password = md5($_POST['password']);
-
-        enter($username,$password);
-
-    }
-?>

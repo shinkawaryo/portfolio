@@ -17,5 +17,28 @@
         }else{
             echo "DEAD";
         }
+
+
+    }elseif(isset($_POST['login'])){
+        $username = $_POST['username'];
+        $password = md5($_POST['password']);
+
+        $login = $user->login($username,$password);
+
+        // print_r($login);
+
+        if($login){
+            $_SESSION['login_id'] = $login['account_id'];
+            $_SESSION['status'] = $login['status'];
+
+            if($_SESSION['status'] == 'A'){
+                header("Location: UI/dashboard.php");
+            }elseif($_SESSION['status'] == 'U'){
+                header("Location: UI/userMenu.php");
+            }
+
+        }else{
+            echo "INCORRECT USERNAME AND PASSWORD";
+        }
     }
 ?>

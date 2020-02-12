@@ -28,5 +28,45 @@
                 header("Location: UI/login.php");
             }
         }
+
+        public function login($username,$password){
+            $sql = "SELECT * FROM accounts WHERE username = '$username' AND password = '$password'";
+
+            $result = $this->conn->query($sql);
+
+            if($result->num_rows == 1){
+                return $result->fetch_assoc();
+            }else{
+                return false;
+            }
+        }
+
+
+        public function displayUser(){
+            $sql = "SELECT * FROM accounts";
+            $result = $this->conn->query($sql);
+
+            $rows = array();
+
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    $rows[] = $row;
+                }
+                return $rows;
+            }
+        }
+
+
+        public function deleteUser($account_id){
+            $sql = "DELETE accounts, users FROM accounts INNER JOIN users ON accounts.account_id = users.account_id  WHERE accounts.account_id = '$account_id'";
+
+            $result = $this->conn->query($sql);
+
+            if($result == false){
+                die("Cannot Delete: ".$this->conn->error);
+            }else{
+                header("Location: userList.php");
+            }
+        }
     }
 ?>
