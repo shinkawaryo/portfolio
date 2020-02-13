@@ -1,7 +1,7 @@
 <?php
     require_once 'database.php';
 
-    class categories extends Database{
+    class Categories extends Database{
         public function addCategory($category_name){
             $sql = "INSERT INTO categories(category_name) VALUES ('$category_name')";
 

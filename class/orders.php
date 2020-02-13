@@ -1,9 +1,9 @@
 <?php
     require_once 'database.php';
 
-    class orders extends Database{
-        public function addOrder($order_amount){
-            $sql = "INSERT INTO orders(order_amount) VALUES ('$order_amount')";
+    class Orders extends Database{
+        public function addOrder($order_menu,$account_id,$order_quantity,$date){
+            $sql = "INSERT INTO orders(order_time,menu_id,account_id,order_quantity) VALUES ('$date','$order_menu','$account_id','$order_quantity')";
 
             $result = $this->conn->query($sql);
 

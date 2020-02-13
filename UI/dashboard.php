@@ -64,7 +64,7 @@
                 <thead class="thead thead-dark text-uppercase">
                     <th>Table</th>
                     <th>Menu</th>
-                    <th>Amount</th>
+                    <th>Quantity</th>
                     <th>Order Time</th>
                     <th></th>
                     <th></th>

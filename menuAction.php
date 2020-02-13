@@ -1,6 +1,6 @@
 <?php
     require_once 'class/menu.php';
-    $menu = new menu();
+    $menu = new Menu();
 
     if(isset($_POST['menu_register'])){
         $menu_name = $_POST['menu_name'];

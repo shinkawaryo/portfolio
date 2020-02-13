@@ -1,7 +1,7 @@
 <?php
     require_once 'database.php';
 
-    class menu extends Database{
+    class Menu extends Database{
         public function addMenu($menu_name,$menu_price,$menu_picture,$category_id){
             $sql = "INSERT INTO menu(menu_name,menu_price,menu_picture,category_id) VALUES ('$menu_name','$menu_price','$menu_picture','$category_id')";
 

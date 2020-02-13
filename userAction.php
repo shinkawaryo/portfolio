@@ -2,6 +2,8 @@
     require_once 'class/users.php';
     $user = new Users();
 
+    session_start();
+
     if(isset($_POST['register'])){
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
