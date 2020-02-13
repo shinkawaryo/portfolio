@@ -21,7 +21,7 @@
         <h2 class="display-4 col-md-3 "><a class="text-white" href="userMenu.php">Menu</a></h2>            
         <div class="form-group col-md-3 m-0 p-0 d-flex align-items-cente">
     <!-- Pagination -->
-    <ul class="pagination d-flex align-items-center p-0 m-0 ml-5">
+    <ul class="pagination d-flex align-items-center p-0 m-0">
     <li class="page-item">
         <a class="page-link bg-dark border-0 text-white" href="#" aria-label="Previous">
             <span aria-hidden="true">&laquo;</span>
@@ -73,21 +73,21 @@
 
                     foreach($allMenu as $all_menu){
                     echo "<div class='card'>
-                                <div class='card-header m-0 p-0'>
-                                    <h5 class='card-title m-1' name='order_menu' value='".$all_menu['menu_id']."'>".$all_menu['menu_name']."</h5>
-                                    <a href='#'><img class='card-img-top' width='100%' height='150' src='../upload/".$all_menu['menu_picture']."' alt=''></a>       
+                            <div class='card-header m-0 p-0'>
+                                <h5 class='card-title m-1' name='order_menu' value='".$all_menu['menu_id']."'>".$all_menu['menu_name']."</h5>
+                                <a href='#'><img class='card-img-top' width='100%' height='150' src='../upload/".$all_menu['menu_picture']."' alt=''></a>       
+                            </div>
+                            <div class='card-body m-0 p-1'> 
+                                <div class='form-row'> 
+                                    <div class='form-group col-md-12 p-2 m-0'>                                  
+                                    <p class='form-control col-md-12 mx-auto m-0 text-center' name='price'>Price: ".$all_menu['menu_price']."</p>
                                 </div>
-                                <div class='card-body m-0 p-1'> 
-                                    <div class='form-row'> 
-                                        <div class='form-group col-md-12 p-2 m-0'>                                  
-                                            <p class='form-control col-md-12 mx-auto m-0 text-center' name='price'>Price: ".$all_menu['menu_price']."</p>
-                                        </div>
-                                    </div>                                
-                                    <div class='form-row'>
-                                        <div class='form-group form-inline m-0'>
-                                            <label for='hou_many' class='ml-2' style='font-size: 15px;'>How Many</label>
-                                            <input type='number' name='order_amount' id='' class='form-control col-md-3 p-0 m-3 text-center'>
-                                            <input type='submit' value='Order' name='order' class='form-control bg-danger text-white col-md-3' style='font-size: 15px;'>
+                            </div>                                
+                            <div class='form-row'>
+                                <div class='form-group form-inline m-0'>
+                                    <label for='order_amount' class='ml-2' style='font-size: 15px;'>Amount:</label>
+                                        <input type='number' name='order_amount' id='' class='form-control col-md-3 p-0 m-3 text-center'>
+                                        <input type='submit' value='Order' name='order' class='form-control bg-danger text-white col-md-3' style='font-size: 15px;'>
                                         </div>
                                     </div>
                                 </div>
