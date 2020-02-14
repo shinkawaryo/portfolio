@@ -1,6 +1,7 @@
 <?php
     include '../categoryAction.php';
     include '../menuAction.php';
+    include '../orderAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -14,32 +15,29 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
-</head>
 <body>
     
-    <div class="container">
+    <div class="container col-md-4">
         <div class="form-row">
-            <div class="form-group col-md-8">
-            <table class="table table-hover">
-                <thead class="thead thead-dark text-uppercase">
-                    <th>#</th>
+            <div class="form-group col-md-12 mt-5 mb-0 ">
+            <table class="table table-bordered">
+                <thead class="thead thead-primary text-uppercase">
                     <th>Menu</th>
                     <th>Price</th>
-                    <th>Amount</th>
-                    <th></th>
+                    <th>Quantity</th>
                 </thead>
                 <tbody>
                     <?php
-                         $categoryList = $category->displayOrder();
+                         $orderList = $order->displaySpecOrder();
 
-                         foreach($categoryList as $category){
-                             $category_id = $category['category_id'];
+                         foreach($orderList as $order){
+                             $order_id = $order['order_id'];
                         echo "
                             <tr>
-                                <td>".$category['category_id']."</td>
-                                <td>".$category['category_name']."</td>
+                                <td>".$order['menu_name']."</td>
+                                <td>".$order['menu_price']."</td>
+                                <td>".$order['order_quantity']."</td>
                                 
-                                <td><a href='deleteCategory.php?category_id=$category_id' role='button' class='btn btn-outline-danger'>Delete Menu</a></td>
                             </tr> 
                         ";
                          }

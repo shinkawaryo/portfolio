@@ -2,6 +2,7 @@
     include '../userAction.php';
     include '../categoryAction.php';
     include '../menuAction.php';
+    include '../orderAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -70,7 +71,22 @@
                     <th></th>
                 </thead>
                 <tbody>
-                    
+                    <?php
+                        $orderAllList = $order->displayAllOrder();
+
+                        foreach($orderAllList as $allOrder){
+                           
+                            echo "
+                            <tr>
+                            <td>".$allOrder['username']."</td>
+                            <td>".$allOrder['menu_name']."</td>
+                            <td>".$allOrder['order_quantity']."</td>
+                            <td>".$allOrder['order_time']."</td>
+                            
+                        </tr>   
+                            ";
+                        }
+                    ?>
                 </tbody>
             </table>
             </div>

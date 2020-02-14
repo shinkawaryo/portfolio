@@ -36,7 +36,7 @@
             if($_SESSION['status'] == 'A'){
                 header("Location: UI/dashboard.php");
             }elseif($_SESSION['status'] == 'U'){
-                header("Location: UI/userMenu.php");
+                header("Location: UI/newUserMenu.php");
             }
 
         }else{
