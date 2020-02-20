@@ -1,24 +1,26 @@
 <?php
-    include '../menuAction.php';
-    include '../categoryAction.php';
+    include 'adminheader.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/ee07aedf32.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-</head>
-</head>
-<body>
+<div class="container-fluid m-0 p-0">            
+                    <h1 class="display-1 bg-secondary text-white"><i class="fas fa-user-cog"></i>Menu</h1>              
+    </div>
+    <div class="container">
+                <div class="form-row mx-auto mt-5">
+                    <div class="form-group col-md-4">
+                        <a href="addMenu.php"><p class="form-control text-center bg-primary text-white"><i class="fas fa-plus-circle"></i>Add Menu</p></a>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <a href="addCategory.php"><p class="form-control text-center bg-success text-white"><i class="fas fa-folder-plus"></i>Add Category</p></a>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <a href="register.php"><p class="form-control text-center bg-warning text-white"><i class="fas fa-user-plus"></i>Add User</p></a>
+                    </div>
+                </div>
+    </div>  
     
     <div class="container">
-        <div class="form-row">
+        <div class="form-row d-flex justify-content-center">
             <div class="form-group col-md-8">
             <table class="table table-hover">
                 <thead class="thead thead-dark text-uppercase">

@@ -3,6 +3,7 @@
     include '../categoryAction.php';
     include '../menuAction.php';
     include '../orderAction.php';
+    include '../billAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -68,23 +69,34 @@
                     <th>Quantity</th>
                     <th>Order Time</th>
                     <th></th>
-                    <th></th>
                 </thead>
                 <tbody>
                     <?php
-                        $orderAllList = $order->displayAllOrder();
+                        $orderAllList = $bill->displayAllOrder();
 
-                        foreach($orderAllList as $allOrder){
-                           
+                        if($orderAllList){
+                            foreach($orderAllList as $allOrder){
+                                $bill_id = $allOrder['bill_id'];
+                                $order_id = $allOrder['order_id'];
+                               
+                                echo "
+                                <tr>
+                                <td>".$allOrder['username']."</td>
+                                <td>".$allOrder['menu_name']."</td>
+                                <td>".$allOrder['order_quantity']."</td>
+                                <td>".$allOrder['order_time']."</td>
+                                <td><a href='updateServeTime.php?order_id=$order_id' role='button' class='btn btn-primary form-control'>SERVE</a></td>
+                                
+                                </tr>   
+                                ";
+                            }
+                        }else{
                             echo "
                             <tr>
-                            <td>".$allOrder['username']."</td>
-                            <td>".$allOrder['menu_name']."</td>
-                            <td>".$allOrder['order_quantity']."</td>
-                            <td>".$allOrder['order_time']."</td>
-                            
-                        </tr>   
-                            ";
+                                <td colspan=6 class='text-center'>No Records Found</td>
+                                
+                            </tr> 
+                        ";    
                         }
                     ?>
                 </tbody>
