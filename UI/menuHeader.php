@@ -2,6 +2,7 @@
     include '../menuAction.php';
     include '../categoryAction.php';
     include '../orderAction.php';
+    include '../billAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,6 +27,7 @@
         <!-- NAVBAR LINKS -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
             <ul class="nav navbar-nav">
+                <div class="form-row ">
                 <?php
                     $allCategories = $category->displayCategory();
 
@@ -36,9 +38,13 @@
                         <li class='nav-item'>
                             <a class='nav-link text-capitalize text-white' href='newSpecificMenu.php?category_id=".$category_id."'>".$category_name."</a>
                         </li>
+                        
                         ";
                     }
                 ?>
-            </ul>
-        </div>
+                <button class="form-control col-md-4 btn btn-danger text-white"><a class="text-white" href="billCalculator.php">bill</a></button>
+                </div>
+                
+            </ul>            
+        </div>        
     </nav>

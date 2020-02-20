@@ -1,5 +1,6 @@
 <?php
     include '../userAction.php';
+    include '../billAction.php';
 ?>
 
 <?php include 'menuHeader.php';?>
@@ -36,7 +37,7 @@
                                                 </div>
                                                 <div class='form-group col-md-6 m-0'>
                                                     <input type='number' name='spec_order_quantity' class='form-control text-center'>
-                                                    <input type='submit' value='Order' name='spec_order' class='form-control bg-danger text-white ' style='font-size: 15px;'>
+                                                    <input type='submit' value='Order' name='spec_order' class='form-control bg-danger text-white mt-2 ' style='font-size: 15px;'>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,9 +50,7 @@
                 </form>
             </div>
             <?php include 'orderContents.php' ?>
-            <div class="form-group col-md-12 mt-0 mx-auto">
-                <input type="submit" name="confirm" value="Confirm" class="form-control btn btn-lg btn-danger">
-            </div>
+            
         </div>
     </div>
 

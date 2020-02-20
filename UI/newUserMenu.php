@@ -1,5 +1,6 @@
 <?php
     include '../userAction.php';
+    
 ?>
 
 
@@ -7,7 +8,7 @@
 
 <div class="container col-md-8" style="margin-top:50px;">
     <div class="row">
-        <form action="../orderAction.php" method="post">
+        <form action="../billAction.php" method="post">
             <div class="form-row">
                 <div class="form-group col-md-8 mt-5">
                         <div class="form-row">
@@ -38,7 +39,7 @@
                                                         </div>
                                                         <div class='form-group col-md-6 m-0'>
                                                             <input type='number' name='order_quantity' class='form-control text-center'>
-                                                            <input type='submit' value='Order' name='order' class='form-control bg-danger text-white ' style='font-size: 15px;'>
+                                                            <input type='submit' value='Order' name='order' class='form-control bg-danger text-white mt-2' style='font-size: 15px;'>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -51,9 +52,7 @@
                         </div>
                 </div>
                 <?php include 'orderContents.php' ?>
-                <div class="form-group col-md-12 mt-0 mx-auto">
-                    <input type="submit" name="confirm" value="Confirm" class="form-control btn btn-lg btn-danger">
-                </div>
+                
             </div>
         </form>
     </div>

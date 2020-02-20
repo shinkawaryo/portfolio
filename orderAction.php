@@ -3,6 +3,8 @@
     $order = new Orders();
 
     require_once 'userAction.php';
+    require_once 'billAction.php';
+
 
 
     if(isset($_POST['order'])){
@@ -10,11 +12,8 @@
         $account_id = $_SESSION['login_id'];
         $order_quantity = $_POST['order_quantity'];
         
-        // echo 
-        // $order_menu."<br>".
-        // $order_quantity."<br>".
-        // $account_id."<br>".
-        // $date;
+        // echo $account_id;
+        
         $orderMenu = $order->addOrder($order_menu,$account_id,$order_quantity);
 
 
@@ -24,15 +23,21 @@
         $spec_order_menu = $_POST['spec_order_menu'];
         $account_id = $_SESSION['login_id'];
         $spec_order_quantity = $_POST['spec_order_quantity'];
-        $date = date('Y/m/d H:i:s');
+        
+        // echo $account_id;
+       
+        $specOrderMenu = $order->addSpecOrder($spec_order_menu,$account_id,$spec_order_quantity);
 
-        // echo 
-        // $spec_order_menu."<br>".
-        // $spec_order_quantity."<br>".
-        // $account_id."<br>".
-        // $date;
-        $specOrderMenu = $order->addSpecOrder($spec_order_menu,$account_id,$spec_order_quantity,$date);
-    }elseif(isset($_POST['confirm'])){
-      header("Location: UI/dashboard.php");
     }
+
+    if(isset($_POST['change_quantity'])){
+        $new_quantity = $_POST['new_quantity'];
+        $order_id = $_POST['order_id'];
+
+
+        $changeQuantity = $order->changeQuantity($new_quantity,$order_id);
+    }
+    
+    
+
 ?>

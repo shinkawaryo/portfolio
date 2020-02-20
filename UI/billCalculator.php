@@ -2,6 +2,7 @@
     include '../categoryAction.php';
     include '../menuAction.php';
     include '../orderAction.php';
+    include '../billAction.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,37 +26,27 @@
                     <th>Menu</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Edit</th>
+                    <th>subtotal</th>
                 </thead>
                 <tbody>
                     <?php
-                         $orderList = $order->displaySpecOrder();
+                         $billList = $bill->displaybill();
                         
-                         if($orderList){
-                             foreach($orderList as $order){
-                                  $order_id = $order['order_id'];
-                                  $menu_id = $order['menu_id'];
+                         if($billList){
+                             foreach($billList as $bill){
+                                  
                              echo "
                              <form action='../billAction.php' method='post'>
                                  <tr>
-                                     <td>".$order['menu_name']."</td>
-                                     <td>".$order['menu_price']."</td>
-                                     <td>".$order['order_quantity']."</td>
-                                     <td><a href='editOrder.php?order_id=$order_id' role='button' class='btn btn-outline-danger'>Edit</a></td>
+                                     <td>".$bill['menu_name']."</td>
+                                     <td>".$bill['menu_price']."<input type='hidden' class='form-control' name='menu_price[]' value='".$bill['menu_price']."'></td>
+                                     <td>".$bill['order_quantity']."<input type='hidden' class='form-control' name='order_quantity[]' value='".$bill['order_quantity']."'></td>
+                                     <td>".$bill['order_quantity'] * $bill['menu_price']."<input type='hidden' class='form-control' name='subtotal[]' value='".$bill['order_quantity'] * $bill['menu_price']."'></td>
                                  </tr>
                                     
                                   
                              ";
                             }
-                            echo"   
-                            <input type='hidden' class='form-control' name='forBill_menu_id' value='".$menu_id."'>
-                            <input type='hidden' class='form-control' name='forBill_order_id' value='".$order_id."'>
-                            <div class='form-row'>
-                                <div class='form-group col-md-12 mt-0 mx-auto'>
-                                    <input type='submit' name='confirm' value='Confirm' class='form-control btn btn-lg btn-danger'>
-                                </div>
-                            </div>
-                        </form>";
                          }else{
                             echo "
                                  <tr>
@@ -63,13 +54,17 @@
                                      
                                  </tr> 
                              "; 
-                         }   
-                            
+                         }                           
                     ?>
                     
                 </tbody>
             </table>
-            </div>
+            <input type='submit' value='Confirm' name='billConfirm' class='form-control bg-danger text-white mt-2' style='font-size: 15px;'>
+            <?php
+                echo "</form>";
+            ?>
+        </div>
+            
            
  
     
