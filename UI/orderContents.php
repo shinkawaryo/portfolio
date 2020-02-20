@@ -35,6 +35,7 @@
                              foreach($orderList as $order){
                                   $order_id = $order['order_id'];
                                   $menu_id = $order['menu_id'];
+                                  $account_id = $order['account_id'];
                              echo "
                              <form action='../billAction.php' method='post'>
                                  <tr>
@@ -50,12 +51,7 @@
                             echo"   
                             <input type='hidden' class='form-control' name='forBill_menu_id' value='".$menu_id."'>
                             <input type='hidden' class='form-control' name='forBill_order_id' value='".$order_id."'>
-                            <div class='form-row'>
-                                <div class='form-group col-md-12 mt-0 mx-auto'>
-                                    <input type='submit' name='confirm' value='Confirm' class='form-control btn btn-lg btn-danger'>
-                                </div>
-                            </div>
-                        </form>";
+                            ";
                          }else{
                             echo "
                                  <tr>
@@ -69,6 +65,16 @@
                     
                 </tbody>
             </table>
+                        <?php
+                            echo "
+                                <div class='form-row'>
+                                <div class='form-group col-md-12 mt-0 mx-auto'>
+                                    <input type='submit' name='confirm' value='Confirm' class='form-control btn btn-lg btn-danger'>
+                                </div>
+                            </div>
+                        </form>
+                            "
+                        ?>
             </div>
            
  

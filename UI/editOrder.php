@@ -3,11 +3,13 @@
     $order_id = $_GET['order_id'];
     $row = $order->getSpecificOrder($order_id);
 ?>
-<div class="container">
+
+
+<div class="container" style="margin-top:100px;">
     
-        <div class="form-row">
+        <div class="form-row ">
             <div class="form-group">
-             <br><br><br><br><h1>CHANGE QUANTITY</h1>
+                <h1 class="display-4">CHANGE QUANTITY</h1>
             </div>
         </div>
         <div class="form-row">
@@ -42,7 +44,8 @@
                         <input type="submit" name="change_quantity" value="Change" class="btn btn-primary btn btn-lg text-uppercase form-control" id="">
                     </div>
                 </div>
-    </form>
+        </form>
+        </div>
 </div>
 
 </body>

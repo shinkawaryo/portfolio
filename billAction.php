@@ -11,6 +11,10 @@
         // $order_id =  $_POST['forBill_order_id'];
         
         $orderAllList = $bill->addAdminOrder();
+
+        // if($orderAllList){
+        //     
+        // }
     }
 
     if(isset($_POST['billConfirm'])){

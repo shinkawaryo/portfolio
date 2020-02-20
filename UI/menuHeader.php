@@ -27,7 +27,7 @@
         <!-- NAVBAR LINKS -->
         <div class="collapse navbar-collapse justify-content-end" id="navbarContent">
             <ul class="nav navbar-nav">
-                <div class="form-row">
+                <div class="row">
                 <?php
                     $allCategories = $category->displayCategory();
 
@@ -35,17 +35,13 @@
                         $category_id = $all_category['category_id'];
                         $category_name = $all_category['category_name'];
                         echo "
-                        <div Class='form-group'>
                         <li class='nav-item'>
                             <a class='nav-link text-capitalize text-white' href='newSpecificMenu.php?category_id=".$category_id."'>".$category_name."</a>
                         </li>
-                        </div>
                         ";
                     }
                 ?>
-                <div class="form-group">
-                <button class="form-control btn btn-danger text-white"><a class="text-white" href="billCalculator.php">bill</a></button>
-                </div>
+                <a href="billCalculator.php" class="btn btn-danger text-white mr-3">CHECKOUT</a>
                 </div>
                 
             </ul>            

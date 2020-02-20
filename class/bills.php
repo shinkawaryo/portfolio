@@ -4,7 +4,7 @@
     class Bills extends Database{
         public function addAdminOrder(){
            
-            $sql = "INSERT INTO bills(account_id,menu_id,order_id) SELECT account_id,menu_id,order_id FROM orders";
+            $sql = "INSERT INTO bills(account_id,menu_id,order_id) SELECT account_id,menu_id,order_id FROM orders ";
 
             $result = $this->conn->query($sql);
         
@@ -12,6 +12,10 @@
             if($result == false){
                 die("CANNOT ADD ADMIN ORDER ".$this->conn->connect_error);
             }else{
+                // echo "<script>
+                //         window.location.replace('UI/newUserMenu.php');
+                //         alert('Order Confirmed');
+                //     </script>";
                 header("Location: UI/newUserMenu.php");
             }
         }
