@@ -14,7 +14,7 @@
             }
 
             return $this->conn;
-            //HI RYO-SAN
+            //HI Kirby
         }
     }
 ?>
