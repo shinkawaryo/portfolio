@@ -42,7 +42,8 @@ CREATE TABLE `accounts` (
 INSERT INTO `accounts` (`account_id`, `username`, `password`, `status`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'A'),
 (4, 'table1', '81dc9bdb52d04dc20036dbd8313ed055', 'U'),
-(5, 'table2', '81dc9bdb52d04dc20036dbd8313ed055', 'U');
+(5, 'table2', '81dc9bdb52d04dc20036dbd8313ed055', 'U'),
+(6, 'table3', '81dc9bdb52d04dc20036dbd8313ed055', 'U');
 
 -- --------------------------------------------------------
 
@@ -54,26 +55,19 @@ CREATE TABLE `bills` (
   `bill_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
   `menu_id` int(11) NOT NULL,
-  `order_id` int(11) NOT NULL
+  `order_id` int(11) NOT NULL,
+  `bill_status` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- テーブルのデータのダンプ `bills`
 --
 
-INSERT INTO `bills` (`bill_id`, `account_id`, `menu_id`, `order_id`) VALUES
-(1, 4, 7, 1),
-(2, 4, 4, 2),
-(4, 4, 7, 1),
-(5, 4, 4, 2),
-(6, 4, 1, 3),
-(7, 4, 2, 4),
-(11, 4, 7, 1),
-(12, 4, 4, 2),
-(13, 4, 1, 3),
-(14, 4, 2, 4),
-(15, 5, 5, 5),
-(16, 5, 7, 6);
+INSERT INTO `bills` (`bill_id`, `account_id`, `menu_id`, `order_id`, `bill_status`) VALUES
+(1, 4, 1, 1, 'finished'),
+(2, 4, 8, 2, 'finished'),
+(3, 5, 10, 3, ''),
+(4, 5, 8, 4, '');
 
 -- --------------------------------------------------------
 
@@ -118,7 +112,7 @@ CREATE TABLE `menu` (
 --
 
 INSERT INTO `menu` (`menu_id`, `menu_name`, `menu_price`, `category_id`, `menu_picture`, `menu_amount`) VALUES
-(1, 'Meat sauce pasta', '250', '1', '2475981.jpg', '0'),
+(1, 'Meat sauce pasta', '300', '1', '2475981.jpg', '0'),
 (2, 'Italian pizza', '200', '2', '7211.jpg', '0'),
 (3, 'Beef steak', '500', '3', '3358.jpg', '0'),
 (4, 'Salmon grill', '250', '4', 'grilled-salmon-fish-on-rectangular-black-ceramic-plate-842142.jpg', '0'),
@@ -127,7 +121,9 @@ INSERT INTO `menu` (`menu_id`, `menu_name`, `menu_price`, `category_id`, `menu_p
 (7, 'Seafood pasta', '250', '1', 'cooked-shrimp-with-noodles-725997.jpg', '0'),
 (8, 'Pork steak', '450', '3', 'asparagus-barbecue-cuisine-delicious-361184.jpg', '0'),
 (9, 'Lemon tea', '120', '5', 'lemon-iced-tea-with-lemon-fruits-792613.jpg', '0'),
-(10, 'Cheesecake', '250', '6', 'cheesecake-1126359.jpg', '0');
+(10, 'Cheesecake', '250', '6', 'cheesecake-1126359.jpg', '0'),
+(11, 'Salami pizza', '200', '2', 'pizza-on-plate-2271194.jpg', '0'),
+(12, 'Sushi', '350', '4', 'sushi-on-brown-wooden-board-2098085.jpg', '0');
 
 -- --------------------------------------------------------
 
@@ -138,6 +134,7 @@ INSERT INTO `menu` (`menu_id`, `menu_name`, `menu_price`, `category_id`, `menu_p
 CREATE TABLE `orders` (
   `order_id` int(11) NOT NULL,
   `order_time` datetime NOT NULL DEFAULT current_timestamp(),
+  `receive_status` varchar(10) NOT NULL,
   `serve_time` datetime DEFAULT NULL,
   `menu_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
@@ -148,14 +145,13 @@ CREATE TABLE `orders` (
 -- テーブルのデータのダンプ `orders`
 --
 
-INSERT INTO `orders` (`order_id`, `order_time`, `serve_time`, `menu_id`, `account_id`, `order_quantity`) VALUES
-(1, '2020-02-18 19:26:26', '2020-02-18 19:31:05', 7, 4, '1'),
-(2, '2020-02-18 19:27:44', '2020-02-18 19:30:37', 4, 4, '2'),
-(3, '2020-02-18 19:31:16', '2020-02-18 19:31:53', 1, 4, '10'),
-(4, '2020-02-18 19:31:19', '2020-02-18 19:31:55', 2, 4, '10'),
-(5, '2020-02-18 19:33:13', '2020-02-18 19:34:19', 5, 5, '5'),
-(6, '2020-02-18 19:33:19', '2020-02-18 19:34:18', 7, 5, '5'),
-(7, '2020-02-19 23:05:21', NULL, 2, 4, '2');
+INSERT INTO `orders` (`order_id`, `order_time`, `receive_status`, `serve_time`, `menu_id`, `account_id`, `order_quantity`) VALUES
+(1, '2020-02-21 16:52:28', 'received', '2020-02-21 16:53:38', 1, 4, '2'),
+(2, '2020-02-21 16:52:38', 'received', '2020-02-21 16:53:40', 8, 4, '3'),
+(3, '2020-02-21 17:05:29', 'received', NULL, 10, 5, '2'),
+(4, '2020-02-21 17:05:33', 'received', NULL, 8, 5, '3'),
+(5, '2020-02-21 17:08:03', '', NULL, 2, 5, '1'),
+(6, '2020-02-21 17:08:06', '', NULL, 6, 5, '2');
 
 -- --------------------------------------------------------
 
@@ -180,7 +176,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`user_id`, `first_name`, `last_name`, `address`, `contact_number`, `email`, `account_id`) VALUES
 (1, 'admin', 'admin', 'admin', '1234', 'admin@email.com', 1),
 (4, 'Ryo', 'Shinkawa', 'Japan', '1234', 'ryo@email.com', 4),
-(5, 'Ryo', 'Shinkawa', 'Japan', '1234', 'ryo@email.com', 5);
+(5, 'Ryo', 'Shinkawa', 'Japan', '1234', 'ryo@email.com', 5),
+(6, 'Ryo', 'Shinkawa', 'Japan', '1234', 'ryo@email.com', 6);
 
 --
 -- ダンプしたテーブルのインデックス
@@ -230,13 +227,13 @@ ALTER TABLE `users`
 -- テーブルのAUTO_INCREMENT `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `account_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルのAUTO_INCREMENT `bills`
 --
 ALTER TABLE `bills`
-  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `bill_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- テーブルのAUTO_INCREMENT `categories`
@@ -248,19 +245,19 @@ ALTER TABLE `categories`
 -- テーブルのAUTO_INCREMENT `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `menu_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- テーブルのAUTO_INCREMENT `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- テーブルのAUTO_INCREMENT `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
