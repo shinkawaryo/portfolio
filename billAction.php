@@ -6,22 +6,29 @@
     require_once 'orderAction.php';
 
     if(isset($_POST['confirm'])){
-        // $account_id = $_SESSION['login_id'];
-        // $menu_id =  $_POST['forBill_menu_id'];
-        // $order_id =  $_POST['forBill_order_id'];
-        
-        $orderAllList = $bill->addAdminOrder();
+        $account_id = $_SESSION['login_id'];
+        $menu_id =  $_POST['forBill_menu_id'];
+        $order_id =  $_POST['forBill_order_id'];
+        $count = count($order_id);
 
-        // if($orderAllList){
-        //     
-        // }
+        // echo $count;
+        if(!empty($menu_id)){
+            $orderAllList = $bill->addAdminOrder($account_id,$menu_id,$order_id,$count);
+        }else{
+            header("Location: UI/newUserMenu.php");
+        }
+        // print_r($account_id);
+
+        
+        
     }
 
     if(isset($_POST['billConfirm'])){
         $subtotal = $_POST['subtotal'];
+        $account_id = $_SESSION['login_id'];
         $sum = 0;
         
-
+        $bill->updateBillStatus($account_id);
         // print_r($subtotal);        
         $count = count($subtotal);
         
@@ -74,7 +81,7 @@
                     echo "</tbody>
                 </table>";
                 echo "<h1 class='display-3'>Total Fee: ".$sum."</h1>";
-                echo "
+                echo "               
                 </div>   
             </body>
         </html>";

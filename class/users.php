@@ -69,5 +69,21 @@
                 header("Location: userList.php");
             }
         }
+
+
+        function countUsers(){
+            $sql = "SELECT COUNT(user_id) AS user_count FROM users";
+            $result = $this->conn->query($sql);
+
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    return $row['user_count'];
+                }
+            }
+        }        
+
+
+
+
     }
 ?>

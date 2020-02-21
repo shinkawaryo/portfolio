@@ -108,10 +108,10 @@
                     <h4>Menu</h4>
                 </div>
                 <div class="card-body border-0">
-                <i class="fas fa-pencil-alt text-white fa-2x"></i>
+                <i class="fas fa-pencil-alt text-white fa-2x"><?php echo $menu->countMenu();?></i>
                 </div>
                 <div class="card-footer border-0">
-                <a href="blogPost.php" class="btn btn-primary border-white">VIEW</a>
+                <a href="menuList.php" class="btn btn-primary border-white">VIEW</a>
                 </div>
             </div>
 
@@ -120,10 +120,10 @@
                     <h4>Category</h4>
                 </div>
                 <div class="card-body border-0">
-                <i class="far fa-folder-open fa-2x"></i>
+                <i class="far fa-folder-open fa-2x"><?php echo $category->countCategories();?></i>
                 </div>
                 <div class="card-footer border-0">
-                <a href="blogCategory.php" class="btn btn-success border-white">VIEW</a>
+                <a href="categoryList.php" class="btn btn-success border-white">VIEW</a>
                 </div>
             </div>
 
@@ -132,10 +132,10 @@
                     <h4>Users</h4>
                 </div>
                 <div class="card-body border-0">
-                <i class="fas fa-users fa-2x"></i>
+                <i class="fas fa-users fa-2x"><?php echo $user->countUsers();?></i>
                 </div>
                 <div class="card-footer border-0">
-                <a href="blogUsers.php" class="btn btn-warning text-white border-white">VIEW</a>
+                <a href="userList.php" class="btn btn-warning text-white border-white">VIEW</a>
                 </div>
             </div>
             </div>

@@ -42,7 +42,7 @@
 
 
         public function displaySpecOrder(){
-            $sql = "SELECT * FROM orders INNER JOIN menu ON orders.menu_id = menu.menu_id INNER JOIN accounts ON orders.account_id = accounts.account_id WHERE accounts.account_id = '".$_SESSION['login_id']."' AND serve_time IS NULL";
+            $sql = "SELECT * FROM orders INNER JOIN menu ON orders.menu_id = menu.menu_id INNER JOIN accounts ON orders.account_id = accounts.account_id WHERE accounts.account_id = '".$_SESSION['login_id']."' AND receive_status !='received'";
 
             $result = $this->conn->query($sql);
 

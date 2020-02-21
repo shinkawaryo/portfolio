@@ -60,6 +60,7 @@
                 </tbody>
             </table>
             <input type='submit' value='Confirm' name='billConfirm' class='form-control bg-danger text-white mt-2' style='font-size: 15px;'>
+            <a href="newUserMenu.php" class="btn btn-primary text-white form-control mt-2">Return To Order Page</a>
             <?php
                 echo "</form>";
             ?>

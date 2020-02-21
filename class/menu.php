@@ -76,7 +76,16 @@
         }
 
 
-        
+        function countMenu(){
+            $sql = "SELECT COUNT(menu_id) AS menu_count FROM menu";
+            $result = $this->conn->query($sql);
+
+            if($result->num_rows > 0){
+                while($row = $result->fetch_assoc()){
+                    return $row['menu_count'];
+                }
+            }
+        }        
 
         
     }

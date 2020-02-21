@@ -35,7 +35,7 @@
                              foreach($orderList as $order){
                                   $order_id = $order['order_id'];
                                   $menu_id = $order['menu_id'];
-                                  $account_id = $order['account_id'];
+                                  
                              echo "
                              <form action='../billAction.php' method='post'>
                                  <tr>
@@ -44,14 +44,13 @@
                                      <td>".$order['order_quantity']."</td>
                                      <td><a href='editOrder.php?order_id=$order_id' role='button' class='btn btn-outline-danger'>Edit</a></td>
                                  </tr>
-                                    
+                                 <input type='hidden' class='form-control' name='forBill_menu_id[]' value='".$menu_id."'>
+                                 <input type='hidden' class='form-control' name='forBill_order_id[]' value='".$order_id."'>
+                                
                                   
                              ";
                             }
-                            echo"   
-                            <input type='hidden' class='form-control' name='forBill_menu_id' value='".$menu_id."'>
-                            <input type='hidden' class='form-control' name='forBill_order_id' value='".$order_id."'>
-                            ";
+                            
                          }else{
                             echo "
                                  <tr>

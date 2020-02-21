@@ -26,7 +26,7 @@
                 <thead class="thead thead-dark text-uppercase">
                     <th>#</th>
                     <th>category Name</th>
-                    <th>Menu Price</th>
+                    <th></th>
                 </thead>
                 <tbody>
                     <?php
